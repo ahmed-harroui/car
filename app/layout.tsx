@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "Car Customizer - Design Your Dream Car",
-  description: "Interactive 3D car customizer with real-time color and material changes",
+  title: "Nexus Car Studio – Neo Kyra Free Roam",
+  description: "Customize a futuristic car and drift freely through an open-world neon city, on desktop, tablet and phone.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -30,17 +30,26 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#05030c",
+}
+
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-      <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-      {children}
-      <Analytics />
+        {children}
+        <Analytics />
       </body>
-      </html>
+    </html>
   )
 }
